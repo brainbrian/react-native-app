@@ -1,9 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, Dimensions, TextInput } from 'react-native';
 import { Button } from 'react-native-elements';
+import { connect } from 'react-redux';
+import { addCity } from '../../actions/cityActions';
+
 const { width } = Dimensions.get('window');
 
-export default class AddCity extends React.Component {
+class AddCity extends React.Component {
   state = {
     input: {
       city: '',
@@ -21,7 +24,11 @@ export default class AddCity extends React.Component {
   }
 
   onPress = () => {
-    console.log('state', this.state);
+    const location = {
+      name: this.state.input.city,
+      country: this.state.input.country,
+    }
+    this.props.dispatchAddCity(location);
   }
 
   render() {
@@ -33,11 +40,13 @@ export default class AddCity extends React.Component {
           source={require('../../assets/images/citieslogo.png')}
         />
         <TextInput
+          placeholder='City'
           value={this.state.input.city}
           onChangeText={value => this.onChangeText('city', value)}
           style={styles.input}
         />
         <TextInput
+          placeholder='Country'
           value={this.state.input.country}
           onChangeText={value => this.onChangeText('country', value)}
           style={styles.input}
@@ -74,3 +83,9 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
 });
+
+const mapDispatchToProps = {
+  dispatchAddCity: (city) => addCity(city),
+};
+
+export default connect(null, mapDispatchToProps)(AddCity);
