@@ -6,13 +6,15 @@ import { addCity } from '../../actions/cityActions';
 
 const { width } = Dimensions.get('window');
 
-class AddCity extends React.Component {
-  state = {
-    input: {
-      city: '',
-      country: '',
-    }
+const originalState = {
+  input: {
+    city: '',
+    country: '',
   }
+}
+
+class AddCity extends React.Component {
+  state = originalState;
 
   onChangeText = (key, value) => {
     this.setState({
@@ -29,6 +31,8 @@ class AddCity extends React.Component {
       country: this.state.input.country,
     }
     this.props.dispatchAddCity(location);
+    this.setState(originalState);
+    this.refs.CityInput.focus();
   }
 
   render() {
@@ -44,12 +48,14 @@ class AddCity extends React.Component {
           value={this.state.input.city}
           onChangeText={value => this.onChangeText('city', value)}
           style={styles.input}
+          ref='CityInput'
         />
         <TextInput
           placeholder='Country'
           value={this.state.input.country}
           onChangeText={value => this.onChangeText('country', value)}
           style={styles.input}
+          ref='CountryInput'
         />
         <Button
           buttonStyle={styles.button}
