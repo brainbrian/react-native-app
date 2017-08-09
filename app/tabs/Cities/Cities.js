@@ -21,7 +21,7 @@ class Cities extends React.Component {
         {
           cities.map((item, index) => (
             <ListItem
-              onPress={() => navigation.navigate('City')}
+              onPress={() => navigation.navigate('City', item)}
               key={index}
               title={item.name}
             />
