@@ -4,7 +4,17 @@ const initialState = {
       name: 'Austin',
       country: 'USA',
       locations: [],
-    }
+    },
+    Milwaukee: {
+      name: 'Milwaukee',
+      country: 'USA',
+      locations: []
+    },
+    Seattle: {
+      name: 'Seattle',
+      country: 'USA',
+      locations: []
+    },
   },
 }
 

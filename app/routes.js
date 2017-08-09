@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image } from 'react-native';
 import { TabNavigator } from 'react-navigation';
-import AddCityTab from './tabs/AddCity/AddCityTab';
+import AddCity from './tabs/AddCity/AddCity';
 import CitiesTab from './tabs/Cities/CitiesTab';
 
 const RouteConfig = {
@@ -18,7 +18,7 @@ const RouteConfig = {
     }
   },
   AddCity: {
-    screen: AddCityTab,
+    screen: AddCity,
     navigationOptions: {
       tabBarLabel: 'Add City',
       tabBarIcon: ({ tintColor }) => (
