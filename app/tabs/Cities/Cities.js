@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { connect } from 'react-redux';
 import { ListItem } from 'react-native-elements';
+import { fetchDataFromAPI } from '../../actions/cityActions';
 
 class Cities extends React.Component {
   static navigationOptions = {
@@ -11,6 +12,10 @@ class Cities extends React.Component {
       resizeMode='contain'
     />
   };
+
+  componentDidMount() {
+    this.props.dispatchFetchDataFromAPI();
+  }
 
   render() {
     const { navigation } = this.props;
@@ -43,4 +48,9 @@ const mapStateToProps = (state) => {
     cities: state.citiesReducer.cities,
   }
 }
-export default connect(mapStateToProps)(Cities);
+
+const mapDispatchToProps = {
+  dispatchFetchDataFromAPI: () => fetchDataFromAPI()
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cities);

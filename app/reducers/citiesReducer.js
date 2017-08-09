@@ -1,28 +1,24 @@
-import { ADD_CITY } from '../constants';
+import { ADD_CITY, FETCHING_DATA, FETCHING_DATA_SUCCESS } from '../constants';
 
 const initialState = {
-  isLoading: true,
-  cities: {
-    Austin: {
-      name: 'Austin',
-      country: 'USA',
-      locations: [],
-    },
-    Milwaukee: {
-      name: 'Milwaukee',
-      country: 'USA',
-      locations: []
-    },
-    Seattle: {
-      name: 'Seattle',
-      country: 'USA',
-      locations: []
-    },
-  },
+  isFetching: true,
+  error: false,
+  cities: {},
 }
 
 export default function citiesReducer(state = initialState, action) {
+  // console.log('action', action);
   switch (action.type) {
+    case FETCHING_DATA:
+      return {
+        ...state,
+        isFetching: true,
+      }
+    case FETCHING_DATA_SUCCESS:
+      return {
+        ...state,
+        cities: action.cities,
+      }
     case ADD_CITY:
       return {
         ...state,
