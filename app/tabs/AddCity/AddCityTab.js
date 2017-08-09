@@ -1,11 +1,11 @@
 import React from 'react';
 import {StackNavigator } from 'react-navigation';
 
-import Cities from './Cities';
+import AddCity from './AddCity';
 
 const RouteConfig = {
-  Cities: {
-    screen: Cities,
+  AddCity: {
+    screen: AddCity,
     navigationOptions: {
       headerTintColor: 'white',
       headerStyle: {
