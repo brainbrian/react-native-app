@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
+import { connect } from 'react-redux';
 
-export default class Cities extends React.Component {
+class Cities extends React.Component {
   static navigationOptions = {
     headerTitle: <Image
       source={require('../../assets/images/citieslogo.png')}
@@ -11,6 +12,7 @@ export default class Cities extends React.Component {
   };
 
   render() {
+    console.log('props: ;', this.props);
     return (
       <View style={styles.container}>
         <Text>Hello from Cities</Text>
@@ -26,3 +28,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   }
 });
+
+const mapStateToProps = (state) => {
+  return {
+    cities: state.citiesReducer.cities,
+  }
+}
+export default connect(mapStateToProps)(Cities);

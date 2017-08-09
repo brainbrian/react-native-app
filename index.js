@@ -11,6 +11,16 @@ import {
 
 import Routes from './app/routes';
 
-const App = () => <Routes />;
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import rootReducer from './app/reducers';
+
+const store = createStore(rootReducer);
+
+const App = () => (
+  <Provider store={store}>
+    <Routes />
+  </Provider>
+);
 
 AppRegistry.registerComponent('ReactNativeApp', () => App);
