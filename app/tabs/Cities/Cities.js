@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { connect } from 'react-redux';
+import { ListItem } from 'react-native-elements';
 
 class Cities extends React.Component {
   static navigationOptions = {
@@ -12,10 +13,20 @@ class Cities extends React.Component {
   };
 
   render() {
-    console.log('props: ;', this.props);
+    const { navigation } = this.props;
+    const cities = Object.values(this.props.cities);
+
     return (
       <View style={styles.container}>
-        <Text>Hello from Cities</Text>
+        {
+          cities.map((item, index) => (
+            <ListItem
+              onPress={() => navigation.navigate('City')}
+              key={index}
+              title={item.name}
+            />
+          ))
+        }
       </View>
     )
   }
@@ -24,8 +35,6 @@ class Cities extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   }
 });
 
